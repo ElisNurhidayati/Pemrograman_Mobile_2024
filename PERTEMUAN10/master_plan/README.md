@@ -1,6 +1,8 @@
-# master_plan
+# **Dasar State Management**
 
-A new Flutter project.
+Nama    :   Elis Nurhidayati
+NIM     :   2241720035
+Kelas   :   TI-3C
 
 ## Getting Started
 
