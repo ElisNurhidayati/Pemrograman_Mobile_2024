@@ -222,76 +222,90 @@ Pada langkah 3, method `completedCount` menghitung jumlah tugas yang sudah seles
 - Langkah 1: Edit PlanProvider
     Edit class PlanProvider sehingga dapat menangani List Plan.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/1.png)
 
 - Langkah 2: Edit main.dart
     Langkah sebelumnya dapat menyebabkan error pada main.dart dan plan_screen.dart. Pada method build, gantilah menjadi kode seperti ini.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/2.png)
 
 - Langkah 3: Edit plan_screen.dart
     Tambahkan variabel plan dan atribut pada constructor-nya
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/3.png)
 
 - Langkah 4: Error
     Itu akan terjadi error setiap kali memanggil PlanProvider.of(context). Itu terjadi karena screen saat ini hanya menerima tugas-tugas untuk satu kelompok Plan, tapi sekarang PlanProvider menjadi list dari objek plan tersebut.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/4.png)
 
 - Langkah 5: Tambah getter Plan
     Tambahkan getter pada _PlanScreenState 
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/5.png)
 
 - Langkah 6: Method initState()
     Pada bagian ini kode tetap seperti berikut.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/6.png)
 
 - Langkah 7: Widget build
     Pastikan Anda telah merubah ke List dan mengubah nilai pada currentPlan 
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/7.png)
 
 - Langkah 8: Edit _buildTaskTile
     Pastikan ubah ke List dan variabel planNotifier
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/8.png)
 
 - Langkah 9: Buat screen baru
     Pada folder view, buatlah file baru dengan nama plan_creator_screen.dart dan deklarasikan dengan StatefulWidget bernama PlanCreatorScreen. Gantilah di main.dart pada atribut home
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/9.png)
+    ![Langkah ](/assets/P3/9a.png)
 
 - Langkah 10: Pindah ke class _PlanCreatorScreenState
     Kita perlu tambahkan variabel TextEditingController sehingga bisa membuat TextField sederhana untuk menambah Plan baru. Jangan lupa tambahkan dispose ketika widget unmounted
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/10.png)
 
 - Langkah 11: Pindah ke method build
     Letakkan method Widget build berikut di atas void dispose.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/11.png)
 
 - Langkah 12: Buat widget _buildListCreator
     Buatlah widget berikut setelah widget build.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/12.png)
 
 - Langkah 13: Buat void addPlan()
     Tambahkan method berikut untuk menerima inputan dari user berupa text plan.
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/13.png)
 
 - Langkah 14: Buat widget _buildMasterPlans()
 
-    ![Langkah ](/assets/P3)
+    ![Langkah ](/assets/P3/14.png)
 
 ---
 ### 2. Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!
+
 ![pict](/assets/Tugas3.png)
+
+**Penjelasan:** 
+- Diagram widget tree yang pertama menunjukkan tampilan aplikasi saat user membuat rencana baru. Pada `PlanCreatorScreen`, kita dapat memanipulasi berbagai elemen seperti `TextField` dan `Expanded` yang disusun dalam `column`. Data paket dikelola melalui `PlanProvider` dan  daftar paket ditampilkan. PlanProvider terletak di pohon widget di bawah `MaterialApp`.
+- Saat user menavigasi ke tampilan utama aplikasi (`PlanScreen`) di widget tree yang kedua, daftar rencana yang  dibuat sebelumnya akan ditampilkan. Data paket masih dikelola oleh `PlanProvider` dan tetap berada di akar widget tree untuk memudahkan akses antar tampilan. Struktur tampilan menggunakan `column`, `Expanded` mengatur item seperti daftar tugas yang ditampilkan dalam `ListView`. Selain itu,  di bawah `SafeArea` terdapat elemen `Text` tempat kita menampilkan pesan penyelesaian rencana.
+
 
 ---
 ### 3. Lakukan capture hasil dari Langkah 14 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
 
+![pict](/assets/P3/hasil-P3.gif)
+
+**Penjelasan:** 
+
+Di layar ini, pengguna dapat membuat rencana (plan) dengan mengisi nama rencana melalui TextField dan menambahkannya ke dalam daftar rencana yang ada. Saat pengguna mengklik salah satu rencana, mereka akan diarahkan ke tampilan detail, di mana mereka dapat melihat informasi lebih lanjut tentang rencana tersebut.
+
+Pada tampilan detail, pengguna memiliki kemampuan untuk menambahkan dan mengelola tugas (task) terkait rencana yang dipilih. Mereka dapat mengisi deskripsi task dan menandai statusnya, baik selesai maupun belum. Fitur ini memungkinkan pengguna untuk tetap terorganisir dan mengontrol pelaksanaan tugas-tugas yang diperlukan untuk mencapai tujuan rencana mereka, menjadikan aplikasi ini alat perencanaan dan manajemen tugas yang efektif.

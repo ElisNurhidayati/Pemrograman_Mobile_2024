@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:master_plan/models/plan.dart';
-import 'package:master_plan/provider/plan_provider.dart';
-import 'package:master_plan/views/plan_screen.dart';
+import '../provider/plan_provider.dart';
+import '../models/data_layer.dart';
+import '../views/plan_screen.dart';
 
 class PlanCreatorScreen extends StatefulWidget {
-  final Plan? plan;
-  const PlanCreatorScreen({Key? key,
-    this.plan, // `plan` sekarang opsional
-  }) : super(key: key);
+  const PlanCreatorScreen({super.key});
 
   @override
-  _PlanCreatorScreenState createState() => _PlanCreatorScreenState();
+  State<PlanCreatorScreen> createState() => _PlanCreatorScreenState();
 }
 
 class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
-  // Langkah 10
   final textController = TextEditingController();
-  
-  get validPlan => null;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // ganti ‘Namaku' dengan nama panggilan Anda
+      appBar: AppBar(
+        title: const Center( 
+          child: Text(
+            'Master Plan Elis',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.purple,),
+
+      body: Column(children: [
+        _buildListCreator(),
+        Expanded(child: _buildMasterPlans())
+      ]),
+    );
+  }
 
   @override
   void dispose() {
@@ -25,43 +41,18 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Center(
-        child: Text(
-          'Master Plan Elis', 
-          style: TextStyle(
-          color: Colors.white, 
-          fontWeight: FontWeight.bold,
-          ),), ),
-      backgroundColor: Colors.purple,),
-
-      body: Column(
-        children: [
-          _buildListCreator(),
-          Expanded(child: _buildMasterPlans()),
-        ],
-      ),
-    );
-  }
-
   Widget _buildListCreator() {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Material(
-        color: Theme.of(context).cardColor,
-        elevation: 10,
-        child: TextField(
-          controller: textController,
-          decoration: const InputDecoration(
-            labelText: 'Add a plan',
-            contentPadding: EdgeInsets.all(20),
-          ),
-          onEditingComplete: addPlan,
-        ),
-      ),
-    );
+        padding: const EdgeInsets.all(20.0),
+        child: Material(
+          color: Theme.of(context).cardColor,
+          elevation: 10,
+          child: TextField(
+              controller: textController,
+              decoration: const InputDecoration(
+                  labelText: 'Add a plan', contentPadding: EdgeInsets.all(20)),
+              onEditingComplete: addPlan),
+        ));
   }
 
   void addPlan() {
@@ -83,31 +74,26 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
 
     if (plans.isEmpty) {
       return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Icon(Icons.note, size: 100, color: Colors.grey),
-          Text(
-            'Anda belum memiliki rencana apapun.',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        ],
-      );
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Icon(Icons.note, size: 100, color: Colors.grey),
+            Text('Anda belum memiliki rencana apapun.',
+                style: Theme.of(context).textTheme.headlineSmall)
+          ]);
     }
-
     return ListView.builder(
-      itemCount: plans.length,
-      itemBuilder: (context, index) {
-        final plan = plans[index];
-        return ListTile(
-          title: Text(plan.name),
-          subtitle: Text(plan.completenessMessage),
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => PlanScreen(plan: validPlan,)),
-            );
-          },
-        );
-      },
-    );
+        itemCount: plans.length,
+        itemBuilder: (context, index) {
+          final plan = plans[index];
+          return ListTile(
+              title: Text(plan.name),
+              subtitle: Text(plan.completenessMessage),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => PlanScreen(
+                          plan: plan,
+                        )));
+              });
+        });
   }
 }
