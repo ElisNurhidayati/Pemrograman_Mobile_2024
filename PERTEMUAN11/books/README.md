@@ -9,7 +9,7 @@
 - [Tujuan Praktikum](#tujuan-praktikum)
 - [Praktikum 1: Mengunduh Data dari Web Service (API)](#praktikum-1-mengunduh-data-dari-web-service-api)
 - [Praktikum 2: Menggunakan await/async untuk menghindari callbacks](#praktikum-2-menggunakan-awaitasync-untuk-menghindari-callbacks)
-- [Praktikum 3: Menggunakan await/async untuk menghindari ](#praktikum-3-menggunakan-awaitasync-untuk-menghindari-callbacks)
+- [Praktikum 3: Menggunakan Completer di Futurecallbacks](#praktikum-3-menggunakan-completer-di-futurecallbacks)
 - [Praktikum]()
 
 ## Tujuan Praktikum
@@ -103,34 +103,65 @@ Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat 
 **Soal 4**
 - Jelaskan maksud kode langkah 1 dan 2 tersebut!
 **Penjelasan:**
-- Langkah 1: Metode returnOneAsync, returnTwoAsync, dan returnThreeAsync adalah fungsi asynchronous yang masing-masing menunggu 3 detik dan mengembalikan nilai integer (1, 2, dan 3).
-
-- Langkah 2: Fungsi count() memanggil ketiga metode di atas secara berurutan, menjumlahkan hasilnya (1 + 2 + 3 = 6), dan menyimpan totalnya di variabel result. Total ini kemudian diperbarui di antarmuka pengguna melalui setState.
+  - Langkah 1: Metode returnOneAsync, returnTwoAsync, dan returnThreeAsync adalah fungsi asynchronous yang masing-masing menunggu 3 detik dan mengembalikan nilai integer (1, 2, dan 3).
+  - Langkah 2: Fungsi count() memanggil ketiga metode di atas secara berurutan, menjumlahkan hasilnya (1 + 2 + 3 = 6), dan menyimpan totalnya di variabel result. Total ini kemudian diperbarui di antarmuka pengguna.
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 4".
 
 ![Langkah 4](/assets/P2/4.gif)
 
 ---
-## Praktikum 3: Menggunakan await/async untuk menghindari callbacks
-Ada alternatif penggunaan Future yang lebih clean, mudah dibaca dan dirawat, yaitu pola async/await. Intinya pada dua kata kunci ini:
-- `async` digunakan untuk menandai suatu method sebagai asynchronous dan itu harus ditambahkan di depan kode function.
-- `await` digunakan untuk memerintahkan menunggu sampai eksekusi suatu function itu selesai dan mengembalikan sebuah `value`. Untuk `then` bisa digunakan pada jenis method apapun, sedangkan `await` hanya bekerja di dalam method `async`.
+## Praktikum 3: Menggunakan Completer di Futurecallbacks
+Menggunakan Future dengan `then`, `catchError`, `async`, dan `await` mungkin sudah cukup untuk banyak kasus, tetapi ada alternatif melakukan operasi async di Dart dan Flutter yaitu dengan `class Completer`.
 
-### Langkah 1: Buka file main.dart
-Tambahkan tiga method berisi kode seperti berikut di dalam `class _FuturePageState`.
+**Completer** membuat object Future yang mana Anda dapat menyelesaikannya nanti (late) dengan return sebuah value atau error.
 
-![Langkah 1](/assets/P2/1.png)
+### Langkah 1: Buka main.dart
+Pastikan telah impor package async berikut.
 
-### Langkah 2: Tambah method count()
-Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya.
+![Langkah 1](/assets/P3/1.png)
 
-![Langkah 2](/assets/P2/2.png)
+### Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState seperti ini..
 
-### Langkah 3: Panggil count()
-Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut.
+![Langkah 2](/assets/P3/2.png)
 
-![Langkah 3](/assets/P2/3.png)
+### Langkah 3: Ganti isi kode onPressed()
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+
+![Langkah 3](/assets/P3/3.png)
 
 ### Langkah 4: Run
-Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Setelah 5 detik, maka angka 42 akan tampil.
+
+**Soal 5**
+- Jelaskan maksud kode langkah 2 tersebut!
+**Penjelasan:**
+
+  Variabel `Completer` bertipe Completer<int> dideklarasikan untuk membuat Future yang dapat diselesaikan (di-complate) secara manual. Method `getNumber()` menginisialisasi Completer, memanggil fungsi calculate(), dan mengembalikan completer.future, yang akan selesai ketika calculate() memanggil completer.complate. Method `calculate()` menunggu eksekusi selama 5 detik, lalu memanggil completer.complete(42) untuk menyelesaikan Future dengan hasil nilai 42 dari getNumber().
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 5".
+
+![Langkah 3](/assets/P3/4.gif)
+
+### Langkah 5: Ganti method calculate()
+Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membuat calculate2()
+
+![Langkah 5](/assets/P3)
+
+### Langkah 6: Pindah ke onPressed()
+
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+}).catchError((e) {
+  result = 'An error occurred';
+});
+
+![Langkah 6](/assets/P3)
+
+**Soal 6**
+- Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 6".

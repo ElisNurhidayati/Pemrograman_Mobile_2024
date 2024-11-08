@@ -1,4 +1,6 @@
 import 'dart:async';
+// ignore: unused_import
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -32,6 +34,21 @@ class FuturePage extends StatefulWidget {
 
 class _FuturePageState extends State<FuturePage> {
   String result = '';
+
+  late Completer completer;
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds : 5));
+    completer.complete(42);
+  }
+
+
 
   Future<Response> getData() async {
     const authority = 'www.googleapis.com';
@@ -84,9 +101,18 @@ class _FuturePageState extends State<FuturePage> {
         child: Column(children: [
           const Spacer(),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, // Warna tombol biru
+              foregroundColor: Colors.white, // Warna teks putih
+            ),
             child: const Text('GO!'),
             onPressed: () {
-              count();
+              getNumber().then((value) {
+                setState(() {
+                  result = value.toString();
+                });
+              });
+              // count();
               // setState(() {});
               // getData()
               // .then((value) {
