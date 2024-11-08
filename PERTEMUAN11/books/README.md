@@ -147,21 +147,19 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
 ### Langkah 5: Ganti method calculate()
 Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membuat calculate2()
 
-![Langkah 5](/assets/P3)
+![Langkah 5](/assets/P3/5.png)
 
 ### Langkah 6: Pindah ke onPressed()
 
-getNumber().then((value) {
-  setState(() {
-    result = value.toString();
-  });
-}).catchError((e) {
-  result = 'An error occurred';
-});
-
-![Langkah 6](/assets/P3)
+![Langkah 6](/assets/P3/6.png)
 
 **Soal 6**
 - Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+**Penjelasan:**
+  - Penanganan Error: Langkah 5 menambahkan try-catch dalam calculate2() untuk menangani error, yang menyelesaikan Future dengan completer.completeError({}) jika ada kegagalan.
+  - Penanganan Hasil di onPressed: Langkah 6 menambahkan catchError pada getNumber() untuk mengubah result menjadi pesan error jika terjadi kesalahan.
+  - Fleksibilitas: Langkah 5 memberi opsi penggunaan calculate2() yang lebih aman karena menangani error.
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 6".
+
+![Soal 6](/assets/P3/soal6.gif)
