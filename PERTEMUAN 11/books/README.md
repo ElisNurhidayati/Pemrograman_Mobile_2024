@@ -9,6 +9,7 @@
 - [Tujuan Praktikum](#tujuan-praktikum)
 - [Praktikum 1: Mengunduh Data dari Web Service (API)](#praktikum-1-mengunduh-data-dari-web-service-api)
 - [Praktikum 2: Menggunakan await/async untuk menghindari callbacks](#praktikum-2-menggunakan-awaitasync-untuk-menghindari-callbacks)
+- [Praktikum 3: Menggunakan Completer di Futurecallbacks](#praktikum-3-menggunakan-completer-di-futurecallbacks)
 
 ## Tujuan Praktikum
 Setelah menyelesaikan codelab ini Anda akan mampu untuk:
@@ -110,3 +111,35 @@ Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat 
 ![Langkah 4](/assets/P2/4.gif)
 
 ---
+## Praktikum 3: Menggunakan Completer di Futurecallbacks
+Menggunakan Future dengan `then`, `catchError`, `async`, dan `await` mungkin sudah cukup untuk banyak kasus, tetapi ada alternatif melakukan operasi async di Dart dan Flutter yaitu dengan `class Completer`.
+
+**Completer** membuat object Future yang mana Anda dapat menyelesaikannya nanti (late) dengan return sebuah value atau error.
+
+### Langkah 1: Buka main.dart
+Pastikan telah impor package async berikut.
+
+![Langkah 1](/assets/P3/1.png)
+
+### Langkah 2: Tambahkan variabel dan method
+Tambahkan variabel late dan method di class _FuturePageState seperti ini..
+
+![Langkah 2](/assets/P3/2.png)
+
+### Langkah 3: Ganti isi kode onPressed()
+Tambahkan kode berikut pada fungsi onPressed(). Kode sebelumnya bisa Anda comment.
+
+![Langkah 3](/assets/P3/3.png)
+
+### Langkah 4: Run
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Setelah 5 detik, maka angka 42 akan tampil.
+
+**Soal 5**
+- Jelaskan maksud kode langkah 2 tersebut!
+**Penjelasan:**
+
+  Variabel `Completer` bertipe Completer<int> dideklarasikan untuk membuat Future yang dapat diselesaikan (di-complate) secara manual. Method `getNumber()` menginisialisasi Completer, memanggil fungsi calculate(), dan mengembalikan completer.future, yang akan selesai ketika calculate() memanggil completer.complate. Method `calculate()` menunggu eksekusi selama 5 detik, lalu memanggil completer.complete(42) untuk menyelesaikan Future dengan hasil nilai 42 dari getNumber().
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 5".
+
+![Langkah 3](/assets/P3/4.gif)

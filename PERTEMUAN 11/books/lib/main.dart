@@ -33,6 +33,19 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
 
+  late Completer completer;
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds : 5));
+    completer.complete(42);
+  }
+
   Future<Response> getData() async {
     const authority = 'www.googleapis.com';
     const path = '/books/v1/volumes/nFm_DwAAQBAJ';
@@ -85,9 +98,17 @@ class _FuturePageState extends State<FuturePage> {
         child: Column(children: [
           const Spacer(),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, // Warna tombol biru
+              foregroundColor: Colors.white, // Warna teks putih
+            ),
             child: const Text('GO!'),
             onPressed: () {
-              count();
+              getNumber().then((value) {
+                setState(() {
+                  result = value.toString();
+                });
+              });
             },
           ),
           const Spacer(),
