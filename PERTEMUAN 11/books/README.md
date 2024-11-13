@@ -58,3 +58,20 @@ Kemudian cobalah akses di browser URI tersebut dengan lengkap seperti ini. Jika 
 
 ![run](/assets/P1/soal2b.png)
 
+### Langkah 5: Tambah kode di ElevatedButton
+Tambahkan kode pada onPressed di ElevatedButton seperti berikut.
+
+![Langkah 5](/assets/P1/5.png)
+
+Lakukan run aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gambar berikut. Jika masih terdapat error, silakan diperbaiki hingga bisa running.
+
+**Soal 3**
+- Jelaskan maksud kode langkah 5 tersebut terkait `substring` dan `catchError`!
+**Penjelasan:** 
+    - Substring: Digunakan untuk mengambil bagian dari String berdasarkan indeks. Misalnya, "Flutter".substring(1, 4) menghasilkan "lut".
+
+    - catchError: Digunakan untuk menangani error pada operasi asynchronous (Future), sehingga aplikasi tidak crash dan error dapat ditangani dengan baik.
+    
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 3".
+
+![run](/assets/P1/soal3.gif)
