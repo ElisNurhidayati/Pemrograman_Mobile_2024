@@ -41,9 +41,19 @@ class _FuturePageState extends State<FuturePage> {
     return completer.future;
   }
 
+  // Future calculate() async {
+  //   await Future.delayed(const Duration(seconds : 5));
+  //   completer.complete(42);
+  // }
+
   Future calculate() async {
-    await Future.delayed(const Duration(seconds : 5));
-    completer.complete(42);
+    try {
+      await Future.delayed(const Duration(seconds : 5));
+      completer.complete(42);
+    }
+    catch (_) {
+      completer.completeError({});
+    }
   }
 
   Future<Response> getData() async {
@@ -53,7 +63,6 @@ class _FuturePageState extends State<FuturePage> {
     return http.get(url);
   }
 
-  // Method Langkah 1
   Future<int> returnOneAsync() async {
   await Future.delayed(const Duration(seconds: 3));
   return 1;
@@ -69,7 +78,6 @@ class _FuturePageState extends State<FuturePage> {
     return 3;
   }
 
-  // Method Langkah 2
   Future count() async {
     int total = 0;
     total = await returnOneAsync();
@@ -108,9 +116,10 @@ class _FuturePageState extends State<FuturePage> {
                 setState(() {
                   result = value.toString();
                 });
-              });
-            },
-          ),
+              }).catchError((e) {
+                result = 'An error occured';
+            });
+          }),
           const Spacer(),
           Text(result),
           const Spacer(),
