@@ -8,9 +8,7 @@
 # Daftar Isi
 - [Tujuan Praktikum](#tujuan-praktikum)
 - [Praktikum 1: Mengunduh Data dari Web Service (API)](#praktikum-1-mengunduh-data-dari-web-service-api)
-- [Tujuan Praktikum](#tujuan-praktikum)
-- [Tujuan Praktikum](#tujuan-praktikum)
-- [Tujuan Praktikum](#tujuan-praktikum)
+- [Praktikum 2: Menggunakan await/async untuk menghindari callbacks](#praktikum-2-menggunakan-awaitasync-untuk-menghindari-callbacks)
 
 ## Tujuan Praktikum
 Setelah menyelesaikan codelab ini Anda akan mampu untuk:
@@ -75,3 +73,40 @@ Lakukan run aplikasi Flutter Anda. Anda akan melihat tampilan akhir seperti gamb
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 3".
 
 ![run](/assets/P1/soal3.gif)
+
+---
+## Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+Ada alternatif penggunaan Future yang lebih clean, mudah dibaca dan dirawat, yaitu pola async/await. Intinya pada dua kata kunci ini:
+- `async` digunakan untuk menandai suatu method sebagai asynchronous dan itu harus ditambahkan di depan kode function.
+- `await` digunakan untuk memerintahkan menunggu sampai eksekusi suatu function itu selesai dan mengembalikan sebuah `value`. Untuk `then` bisa digunakan pada jenis method apapun, sedangkan `await` hanya bekerja di dalam method `async`.
+
+### Langkah 1: Buka file main.dart
+Tambahkan tiga method berisi kode seperti berikut di dalam `class _FuturePageState`.
+
+![Langkah 1](/assets/P2/1.png)
+
+### Langkah 2: Tambah method count()
+Lalu tambahkan lagi method ini di bawah ketiga method sebelumnya.
+
+![Langkah 2](/assets/P2/2.png)
+
+### Langkah 3: Panggil count()
+Lakukan comment kode sebelumnya, ubah isi kode onPressed() menjadi seperti berikut.
+
+![Langkah 3](/assets/P2/3.png)
+
+### Langkah 4: Run
+Akhirnya, run atau tekan F5 jika aplikasi belum running. Maka Anda akan melihat seperti gambar berikut, hasil angka 6 akan tampil setelah delay 9 detik.
+
+**Soal 4**
+- Jelaskan maksud kode langkah 1 dan 2 tersebut!
+**Penjelasan:**
+- Langkah 1: Metode returnOneAsync, returnTwoAsync, dan returnThreeAsync adalah fungsi asynchronous yang masing-masing menunggu 3 detik dan mengembalikan nilai integer (1, 2, dan 3).
+
+- Langkah 2: Fungsi count() memanggil ketiga metode di atas secara berurutan, menjumlahkan hasilnya (1 + 2 + 3 = 6), dan menyimpan totalnya di variabel result. Total ini kemudian diperbarui di antarmuka pengguna melalui setState.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 4".
+
+![Langkah 4](/assets/P2/4.gif)
+
+---
