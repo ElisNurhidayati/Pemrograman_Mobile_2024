@@ -10,6 +10,11 @@
 - [Praktikum 1: Mengunduh Data dari Web Service (API)](#praktikum-1-mengunduh-data-dari-web-service-api)
 - [Praktikum 2: Menggunakan await/async untuk menghindari callbacks](#praktikum-2-menggunakan-awaitasync-untuk-menghindari-callbacks)
 - [Praktikum 3: Menggunakan Completer di Futurecallbacks](#praktikum-3-menggunakan-completer-di-futurecallbacks)
+- [Praktikum 4: Memanggil Future secara paralel](#praktikum-4-memanggil-future-secara-paralel)
+- [Praktikum 5: Menangani Respon Error pada Async Code](#praktikum-5-menangani-respon-error-pada-async-code)
+- [Praktikum]()
+- [Praktikum]()
+- [Praktikum]()
 - [Praktikum]()
 
 ## Tujuan Praktikum
@@ -163,3 +168,133 @@ Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membu
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 6".
 
 ![Soal 6](/assets/P3/soal6.gif)
+
+---
+## Praktikum 4: Memanggil Future secara paralel
+Ketika Anda membutuhkan untuk menjalankan banyak Future secara bersamaan, ada sebuah class yang dapat Anda gunakan yaitu: FutureGroup.
+
+**FutureGroup** adalah sekumpulan dari Future yang dapat run secara paralel. Ketika run secara paralel, maka konsumsi waktu menjadi lebih hemat (cepat) dibanding run method async secara single setelah itu method async lainnya.
+
+Ketika semua code async paralel selesai dieksekusi, maka FutureGroup akan return value sebagai sebuah List, sama juga ketika ingin menambahkan operasi paralel dalam bentuk List.
+
+### Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState
+
+![Langkah 1](/assets/P4/1.png)
+
+### Langkah 2: Edit onPressed()
+Tambahkan variabel late dan method di class _FuturePageState seperti ini..
+
+![Langkah 2](/assets/P4/2.png)
+
+### Langkah 3: Run
+Anda akan melihat hasilnya dalam 3 detik berupa angka 6 lebih cepat dibandingkan praktikum sebelumnya menunggu sampai 9 detik.
+
+![Langkah 3](/assets/P4/3.png)
+
+### Langkah 4: Ganti variabel futureGroup
+Menggunakan FutureGroup dengan `Future.wait`
+
+**Soal 8**
+Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+**Penjelasan:** 
+
+
+---
+## Praktikum 5: Menangani Respon Error pada Async Code
+Ada beberapa teknik untuk melakukan handle error pada code async. Pada praktikum ini Anda akan menggunakan 2 cara, yaitu then() callback dan pola async/await.
+
+### Langkah 1: Buka file main.dart
+Tambahkan method ini ke dalam class _FuturePageState
+
+![Langkah 1](/assets/P5/1.png)
+
+### Langkah 2: ElevatedButton
+
+![Langkah 2](/assets/P5/2.png)
+
+### Langkah 3: Run
+Pada bagian debug console akan melihat teks Complete seperti berikut.
+
+![Langkah 3](/assets/P5/3.png)
+
+**Soal 9**
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 9".
+
+![Langkah 3](/assets/P5)
+
+### Langkah 4: Tambah method handleError()
+Tambahkan kode ini di dalam class _FutureStatePage
+
+![Langkah 3](/assets/P5/4.png)
+
+**Soal 10**
+Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+![Langkah 3](/assets/P5)
+
+**Penjelasan:**
+
+---
+## Praktikum 6: Menggunakan Future dengan StatefulWidget
+Seperti yang Anda telah pelajari, Stateless widget tidak dapat menyimpan informasi (state), StatefulWidget dapat mengelola variabel dan properti dengan method setState(), yang kemudian dapat ditampilkan pada UI. State adalah informasi yang dapat berubah selama life cycle widget itu berlangsung.
+
+Ada 4 method utama dalam life cycle StatefullWidget:
+- initState(): dipanggil sekali ketika state dibangun. Bisa dikatakan ini juga sebagai konstruktor class.
+- build(): dipanggil setiap kali ada perubahan state atau UI. Method ini melakukan destroy UI dan membangun ulang dari nol.
+- deactive() dan dispose(): digunakan untuk menghapus widget dari tree, pada beberapa kasus dimanfaatkan untuk menutup koneksi ke database atau menyimpan data sebelum berpindah screen.
+
+### Langkah 1: install plugin geolocator
+Tambahkan plugin geolocator dengan mengetik perintah berikut di terminal.
+`flutter pub add geolocator`
+
+![Langkah 1](/assets/P6/1.png)
+
+### Langkah 2: Tambah permission GPS
+- Jika Anda menargetkan untuk platform Android, maka tambahkan baris kode berikut di file `android/app/src/main/androidmanifest.xml`
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+- Jika Anda menargetkan untuk platform iOS, maka tambahkan kode ini ke file Info.plist
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This app needs to access your location</string>
+
+![Langkah 2](/assets/P6/2.png)
+
+### Langkah 3: Buat file geolocation.dart
+Tambahkan file baru ini di folder lib project Anda.
+
+![Langkah 3](/assets/P6/3.png)
+
+### Langkah 4: Buat StatefulWidget
+Buat class LocationScreen di dalam file geolocation.dart
+
+![Langkah 4](/assets/P6/4.png)
+
+### Langkah 5: Isi kode geolocation.dart
+
+![Langkah 5](/assets/P6/5.png)
+
+**Soal 11**
+Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+### Langkah 6: Edit main.dart
+Panggil screen baru tersebut di file main Anda seperti berikut.
+`home: LocationScreen(),`
+
+![Langkah 6](/assets/P6/6.png)
+
+### Langkah 7: Run
+
+![Langkah 7](/assets/P6/7.png)
+
+### Langkah 8: Tambahkan widget animasi loading
+
+![Langkah 8](/assets/P6/8.png)
+
+**Soal 12**
+- Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+- Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".
+
