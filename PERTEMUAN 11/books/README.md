@@ -221,7 +221,6 @@ Tambahkan method ini ke dalam class _FuturePageState
 ![Langkah 2](/books/assets/P5/2.png)
 
 ### Langkah 3: Run
-Pada bagian debug console akan melihat teks Complete seperti berikut.
 
 **Soal 9**
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 9".
@@ -231,14 +230,22 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 ### Langkah 4: Tambah method handleError()
 Tambahkan kode ini di dalam class _FutureStatePage
 
-![Langkah 3](/assets/P5/4.png)
+![Langkah 4](/books/assets/P5/4.png)
 
 **Soal 10**
 Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
 
-![Langkah 3](/assets/P5)
+- Memanggil handleError()
 
-**Penjelasan:**
+![onPrresed](/books/assets/P5/panggil_4.png)
+
+- Hasil Run
+
+![run](/books/assets/P5/soal10.gif)
+
+- **Penjelasan:**
+
+Langkah 1: Lebih lengkap dengan penggunaan FutureGroup untuk mengelola dan menggabungkan beberapa Future serta pengolahan hasilnya. Langkah 4: Hanya menggunakan Future.wait, dan hasilnya tidak diolah lebih lanjut. Tambahan handleError() di tombol ElevatedButton memberikan penanganan error secara terpusat dalam satu method, sedangkan di langkah 1 penanganan error dilakukan di setiap Future jika diperlukan.
 
 ---
 ## Praktikum 6: Menggunakan Future dengan StatefulWidget
@@ -253,7 +260,7 @@ Ada 4 method utama dalam life cycle StatefullWidget:
 Tambahkan plugin geolocator dengan mengetik perintah berikut di terminal.
 `flutter pub add geolocator`
 
-![Langkah 1](/assets/P6/1.png)
+![Langkah 1]()
 
 ### Langkah 2: Tambah permission GPS
 - Jika Anda menargetkan untuk platform Android, maka tambahkan baris kode berikut di file `android/app/src/main/androidmanifest.xml`
@@ -264,21 +271,21 @@ Tambahkan plugin geolocator dengan mengetik perintah berikut di terminal.
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>This app needs to access your location</string>
 
-![Langkah 2](/assets/P6/2.png)
+![Langkah 2]()
 
 ### Langkah 3: Buat file geolocation.dart
 Tambahkan file baru ini di folder lib project Anda.
 
-![Langkah 3](/assets/P6/3.png)
+![Langkah 3]()
 
 ### Langkah 4: Buat StatefulWidget
 Buat class LocationScreen di dalam file geolocation.dart
 
-![Langkah 4](/assets/P6/4.png)
+![Langkah 4]()
 
 ### Langkah 5: Isi kode geolocation.dart
 
-![Langkah 5](/assets/P6/5.png)
+![Langkah 5]()
 
 **Soal 11**
 Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
@@ -287,15 +294,15 @@ Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerja
 Panggil screen baru tersebut di file main Anda seperti berikut.
 `home: LocationScreen(),`
 
-![Langkah 6](/assets/P6/6.png)
+![Langkah 6]()
 
 ### Langkah 7: Run
 
-![Langkah 7](/assets/P6/7.png)
+![Langkah 7]()
 
 ### Langkah 8: Tambahkan widget animasi loading
 
-![Langkah 8](/assets/P6/8.png)
+![Langkah 8]()
 
 **Soal 12**
 - Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));

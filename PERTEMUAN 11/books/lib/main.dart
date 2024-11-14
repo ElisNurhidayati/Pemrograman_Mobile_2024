@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:async/async.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -117,6 +118,22 @@ class _FuturePageState extends State<FuturePage> {
     throw Exception('Something terrible happened');
   }
 
+  Future handleError() async {
+    try {
+      await returnError();
+    }
+    catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    }
+    finally {
+      if (kDebugMode) {
+        print('Complete');
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -136,21 +153,12 @@ class _FuturePageState extends State<FuturePage> {
           const Spacer(),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue, // Warna tombol biru
-              foregroundColor: Colors.white, // Warna teks putih
+              backgroundColor: Colors.blue, 
+              foregroundColor: Colors.white,
             ),
             child: const Text('GO!'),
             onPressed: () {
-              returnError()
-                .then((value) {
-                  setState(() {
-                    result =  'Success';
-                  });
-                  }).catchError((onError) {
-                  setState(() {
-                    result = onError.toString();
-                  });
-                }).whenComplete(() => print('Complete'));
+              handleError();
             }),
           const Spacer(),
           Text(result),
