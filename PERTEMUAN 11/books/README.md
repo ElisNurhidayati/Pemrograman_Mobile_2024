@@ -199,11 +199,13 @@ Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan co
 ### Langkah 4: Ganti variabel futureGroup
 Menggunakan FutureGroup dengan `Future.wait`
 
+![Langkah 3](/books/assets/P4/4.png)
+
 **Soal 8**
 Jelaskan maksud perbedaan kode langkah 1 dan 4!
 
 **Penjelasan:** 
-
+Langkah 1 lebih lengkap karena memanfaatkan `FutureGroup` untuk mengumpulkan nilai yang dihasilkan oleh setiap `Future`, menghitung total, dan memperbarui tampilan dengan nilai tersebut. Sedangkan, langkah 4 hanya mengumpulkan `Future` dengan `Future.wait` tanpa langkah tambahan untuk memproses hasil dari proses asinkron tersebut.
 
 ---
 ## Praktikum 5: Menangani Respon Error pada Async Code
@@ -212,21 +214,19 @@ Ada beberapa teknik untuk melakukan handle error pada code async. Pada praktikum
 ### Langkah 1: Buka file main.dart
 Tambahkan method ini ke dalam class _FuturePageState
 
-![Langkah 1](/assets/P5/1.png)
+![Langkah 1](/books/assets/P5/1.png)
 
 ### Langkah 2: ElevatedButton
 
-![Langkah 2](/assets/P5/2.png)
+![Langkah 2](/books/assets/P5/2.png)
 
 ### Langkah 3: Run
 Pada bagian debug console akan melihat teks Complete seperti berikut.
 
-![Langkah 3](/assets/P5/3.png)
-
 **Soal 9**
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 9".
 
-![Langkah 3](/assets/P5)
+![Langkah 3](/books/assets/P5/3.gif)
 
 ### Langkah 4: Tambah method handleError()
 Tambahkan kode ini di dalam class _FutureStatePage
