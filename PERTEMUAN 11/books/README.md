@@ -390,8 +390,6 @@ Tambahkan file baru ini di folder lib project Anda.
 ### Langkah 4: Buat file baru navigation_second.dart
 Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
 
-![soal 13](/assets/P8)
-
 ### Langkah 5: Buat class NavigationSecond dengan StatefulWidget
 
 ![Langkah 5](/assets/P8/5.png)
@@ -403,10 +401,18 @@ Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view m
 ### Langkah 8: Run
 **Soal 16**
 - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+![Langkah 8](/assets/P8/soal16A.gif)
+
+**Penjelasan:** Ketika tombol di layar kedua diklik, warna yang dipilih dikirim kembali ke layar pertama menggunakan Navigator.pop(). Di layar pertama, warna ini diterima dan memperbarui latar belakang menggunakan setState(). Ini terjadi karena Flutter mendukung navigation with data passing.
+
 - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+
+![Langkah 8](/assets/P8/soal16B.png)
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
 
-![Langkah 8](/assets/P8)
+![Langkah 8](/assets/P8/soal16C.gif)
 
 ---
 ## Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
