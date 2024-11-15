@@ -6,20 +6,17 @@
     "configurations": [
         {
             "name": "books",
-            "cwd": "books",
             "request": "launch",
             "type": "dart"
         },
         {
             "name": "books (profile mode)",
-            "cwd": "books",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
             "name": "books (release mode)",
-            "cwd": "books",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
