@@ -14,8 +14,8 @@
 - [Praktikum 5: Menangani Respon Error pada Async Code](#praktikum-5-menangani-respon-error-pada-async-code)
 - [Praktikum 6: Menggunakan Future dengan StatefulWidget](#praktikum-6-menggunakan-future-dengan-statefulwidget)
 - [Praktikum 7: Manajemen Future dengan FutureBuilder](#praktikum-7-manajemen-future-dengan-futurebuilder)
-- [Praktikum]()
-- [Praktikum]()
+- [Praktikum 8: Navigation route dengan Future Function](#praktikum-8-navigation-route-dengan-future-function)
+- [Praktikum 9: Memanfaatkan async/await dengan Widget Dialog](#praktikum-9-memanfaatkan-asyncawait-dengan-widget-dialog)
 
 
 ## Tujuan Praktikum
