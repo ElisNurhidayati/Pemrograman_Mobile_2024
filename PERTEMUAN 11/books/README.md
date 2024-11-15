@@ -429,7 +429,7 @@ Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view m
 
 ### Langkah 4: Panggil method di ElevatedButton
 
-![Langkah 4](/assets/P9)
+![Langkah 4](/assets/P9/4.png)
 
 ### Langkah 5: Edit main.dart
 
@@ -438,9 +438,17 @@ Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view m
 ### Langkah 6: Run
 Coba ganti warna background dengan widget dialog tersebut. Jika terjadi error, silakan diperbaiki. Jika berhasil, akan tampil seperti gambar berikut.
 
-![Langkah 6](/assets/P9/6.png)
-
 **Soal 17**
 - Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+![Langkah 6](/assets/P9/soal17A.gif)
+
+**Penjelasan:** Ketika tombol di dialog ditekan, warna yang dipilih mengganti variabel color. Dialog ditutup dengan Navigator.pop(), dan latar belakang diperbarui melalui setState().
+
 - Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+
+![Langkah 6](/assets/P9/soal17B.png)
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
+
+![Langkah 6](/assets/P9/soal17C.gif)
