@@ -13,7 +13,7 @@
 - [Praktikum 4: Memanggil Future secara paralel](#praktikum-4-memanggil-future-secara-paralel)
 - [Praktikum 5: Menangani Respon Error pada Async Code](#praktikum-5-menangani-respon-error-pada-async-code)
 - [Praktikum 6: Menggunakan Future dengan StatefulWidget](#praktikum-6-menggunakan-future-dengan-statefulwidget)
-- [Praktikum]()
+- [Praktikum 7: Manajemen Future dengan FutureBuilder](#praktikum-7-manajemen-future-dengan-futurebuilder)
 - [Praktikum]()
 - [Praktikum]()
 
@@ -312,3 +312,117 @@ Panggil screen baru tersebut di file main Anda seperti berikut.
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".
 
 ![hasil](/assets/P6/soal12C.png)
+
+---
+## Praktikum 7: Manajemen Future dengan FutureBuilder
+
+### Langkah 1: Modifikasi method getPosition()
+
+![Langkah 1](/assets/P7/1.png)
+
+### Langkah 2: Tambah variabel
+Tambah variabel ini di class _LocationScreenState
+
+![Langkah 2](/assets/P7/2.png)
+
+### Langkah 3: Buat file geolocation.dart
+Tambahkan file baru ini di folder lib project Anda.
+
+![Langkah 3](/assets/P7/3.png)
+
+### Langkah 4: Buat StatefulWidget
+Buat class LocationScreen di dalam file geolocation.dart
+
+![Langkah 4](/assets/P7/4.png)
+
+**Soal 13**
+- Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+
+**Penjelasan:** Dengan praktikum sebelumnya, Posisi diperbarui dengan setState. UI menampilkan indikator loading (CircularProgressIndicator) hingga lokasi didapat, lalu menampilkan teks posisi (myPosition).
+Mengandalkan variabel isLoading untuk mengontrol tampilan. Sedangkan pada praktikum ini FutureBuilder mengelola status loading secara otomatis berdasarkan Future dari getPosition. Menampilkan indikator loading saat Future belum selesai, lalu teks posisi saat selesai.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13".
+
+![soal 13](/assets/P7/soal13.gif)
+
+- Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.
+
+### Langkah 5: Isi kode geolocation.dart
+
+![Langkah 5](/assets/P7/5.png)
+
+**Soal 14**
+- Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
+
+![Langkah 3](/assets/P7/5.png)
+
+---
+## Praktikum 8: Navigation route dengan Future Function
+
+### Langkah 1: Buat file baru navigation_first.dart
+Buatlah file baru ini di project lib Anda.
+
+### Langkah 2: Isi kode navigation_first.dart
+**Soal 15**
+- Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+- Silakan ganti dengan warna tema favorit Anda.
+
+![Langkah 2](/assets/P8/2.png)
+
+### Langkah 3: Tambah method di class _NavigationFirstState
+Tambahkan file baru ini di folder lib project Anda.
+
+![Langkah 3](/assets/P8/3.png)
+
+### Langkah 4: Buat file baru navigation_second.dart
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+![soal 13](/assets/P8)
+
+### Langkah 5: Buat class NavigationSecond dengan StatefulWidget
+
+![Langkah 5](/assets/P8/5.png)
+
+### Langkah 6: Edit main.dart
+
+![Langkah 6](/assets/P8/6.png)
+
+### Langkah 8: Run
+**Soal 16**
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 16".
+
+![Langkah 8](/assets/P8)
+
+---
+## Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+### Langkah 1: Buat file baru navigation_dialog.dart
+
+### Langkah 2: Isi kode navigation_dialog.dart
+
+![Langkah 2](/assets/P9/2.png)
+
+### Langkah 3: Tambah method async
+
+![Langkah 3](/assets/P9/3.png)
+
+### Langkah 4: Panggil method di ElevatedButton
+
+![Langkah 4](/assets/P9)
+
+### Langkah 5: Edit main.dart
+
+![Langkah 5](/assets/P9/5.png)
+
+### Langkah 6: Run
+Coba ganti warna background dengan widget dialog tersebut. Jika terjadi error, silakan diperbaiki. Jika berhasil, akan tampil seperti gambar berikut.
+
+![Langkah 6](/assets/P9/6.png)
+
+**Soal 17**
+- Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+- Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
