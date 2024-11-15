@@ -353,9 +353,21 @@ Mengandalkan variabel isLoading untuk mengontrol tampilan. Sedangkan pada prakti
 
 **Soal 14**
 - Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+
+**Penjelasan:**
+  - Langkah Sebelumnya:
+Jika terjadi error dalam proses pengambilan lokasi, UI tidak memberikan feedback yang jelas kepada pengguna. FutureBuilder hanya menampilkan widget kosong (Text('')), sehingga pengguna tidak tahu apa yang terjadi.
+
+- Langkah Saat Ini:
+Dengan menambahkan error handling (if (snapshot.hasError)), jika terjadi error (misalnya, layanan lokasi tidak aktif atau izin lokasi tidak diberikan), aplikasi akan menampilkan pesan "Something terrible happened!". Ini memberikan informasi yang lebih baik kepada pengguna tentang adanya masalah.
+
+- Mengapa demikian:
+Error handling dalam FutureBuilder memungkinkan aplikasi merespons situasi error secara eksplisit. Sebelumnya, error tidak ditangani secara khusus, sehingga aplikasi hanya menampilkan widget default untuk state kosong. Dengan adanya handling baru, aplikasi dapat memeriksa snapshot.hasError dan menampilkan konten yang relevan, mengubah UI sesuai kebutuhan.
+Ini memperbaiki pengalaman pengguna dengan memberikan feedback langsung dibandingkan dengan langkah sebelumnya.
+
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
 
-![Langkah 3](/assets/P7/5.png)
+![Langkah 3](/assets/P7/soal14.gif)
 
 ---
 ## Praktikum 8: Navigation route dengan Future Function
