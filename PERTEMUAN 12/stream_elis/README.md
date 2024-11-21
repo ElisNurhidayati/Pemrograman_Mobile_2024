@@ -10,6 +10,9 @@
 # Daftar Isi
 - [Praktikum 1: Dart Streams](#praktikum-1-dart-streams)
 - [Praktikum 2: Stream controllers dan sinks](#praktikum-2-stream-controllers-dan-sinks)
+- [Praktikum 3: Injeksi data ke streams](#praktikum-3-injeksi-data-ke-streams)
+- [Praktikum 4: Subscribe ke stream events](#praktikum-4-subscribe-ke-stream-events)
+- [Praktikum 5: Multiple stream subscriptions](#praktikum-5-multiple-stream-subscriptions)
 
 
 ## Tujuan Praktikum
