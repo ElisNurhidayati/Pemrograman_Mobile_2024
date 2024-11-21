@@ -267,3 +267,42 @@ Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. `Dilangkah 9`
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
+
+## Praktikum 5: Multiple stream subscriptions
+### Langkah 1: Buka file main.dart
+
+![Langkah 1](/assets/P5/1.png)
+
+### Langkah 2: Edit initState()
+
+![Langkah 2](/assets/P5/2.png)
+
+### Langkah 3: Run
+
+![Langkah 3](/assets/P5/3.png)
+
+**Soal 10**
+- Jelaskan mengapa error itu bisa terjadi ?
+
+**Penjelasan:** Error "**Bad state: Stream has already been listened to**" terjadi karena single-subscription stream hanya mendukung satu listener pada satu waktu. Jika mencoba menambahkan listener kedua, error ini muncul karena stream tidak dapat berbagi data ke lebih dari satu listener secara default.
+
+
+### Langkah 4: Set broadcast stream
+
+![Langkah 4](/assets/P5/4.png)
+
+### Langkah 5: Edit method build()
+
+![Langkah 5](/assets/P5/5.png)
+
+### Langkah 6: Run
+
+![Langkah 6](/assets/P5/6.gif)
+
+**Soal 11**
+- Jelaskan mengapa hal itu bisa terjadi ?
+
+**Penjelasan:** Ketika menggunakan `asBroadcastStream()`, stream diubah menjadi broadcast stream, yang memungkinkan banyak listeners mendengarkan secara bersamaan. Akibatnya, setiap listener menerima event secara independen, sehingga angka diproses dua kali (oleh kedua listeners), menghasilkan teks angka yang bertambah dua kali.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".
