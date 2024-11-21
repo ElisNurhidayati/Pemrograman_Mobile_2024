@@ -105,3 +105,80 @@ import 'stream.dart';
     - `await for`: await for digunakan untuk mendengarkan stream secara asinkron, di mana aliran data dari stream akan diterima secara berurutan. Ini adalah cara yang lebih sederhana dan langsung untuk menangani stream jika Anda hanya perlu memproses elemen stream satu per satu. Menunggu stream selesai atau berhenti dengan await for memungkinkan Anda untuk menangani data secara sekuensial.
 
 - Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
+
+## Praktikum 2: Stream controllers dan sinks
+### Langkah 1: Buka file stream.dart
+
+```dart
+import 'dart:async';
+```
+
+### Langkah 2: Tambah class NumberStream
+
+![Langkah 2](/assets/P2/2.png)
+
+### Langkah 3: Tambah StreamController
+
+![Langkah 3](/assets/P2/3.png)
+
+### Langkah 4: Tambah method addNumberToSink
+
+![Langkah 4](/assets/P2/4.png)
+
+### Langkah 5: Tambah method close()
+
+![Langkah 5](/assets/P2/5.png)
+
+### Langkah 6: Buka main.dart
+
+```dart
+import 'dart:async';
+import 'dart:math';
+```
+
+### Langkah 7: Tambah variabel
+
+![Langkah 7](/assets/P2/7.png)
+
+### Langkah 8: Edit initState()
+
+![Langkah 8](/assets/P2/8.png)
+
+### Langkah 9: Edit dispose()
+
+![Langkah 9](/assets/P2/9.png)
+
+### Langkah 10: Tambah method addRandomNumber()
+
+![Langkah 10](/assets/P2/10.png)
+
+### Langkah 11: Edit method build()
+
+![Langkah 11](/assets/P2/11.png)
+
+### Langkah 12: Run
+**Soal 6**
+- Jelaskan maksud kode langkah 8 dan 10 tersebut!
+**Penjelasan:** Langkah 8 (`initState`): Menginisialisasi stream dan mendengarkan data yang dikirimkan ke stream. Kemudian langkah 10 (`addRandomNumber`): Membuat angka acak dan mengirimkannya ke stream agar bisa diproses dan ditampilkan di UI.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
+
+![Langkah 12](/assets/P2/12.gif)
+
+### Langkah 13: Buka stream.dart
+
+![Langkah 13](/assets/P2)
+
+### Langkah 14: Buka main.dart
+
+![Langkah 14](/assets/P2)
+
+### Langkah 15: Edit method addRandomNumber()
+
+![Langkah 15](/assets/P2)
+
+**Soal 7**
+Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".

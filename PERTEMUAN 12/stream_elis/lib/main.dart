@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'stream.dart';
+import 'dart:async';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +32,10 @@ class StreamHomePage extends StatefulWidget {
 class _StreamHomePageState extends State<StreamHomePage> {
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
+  int lastNumber = 0;
+  late StreamController<int> numberStreamController;
+  late NumberStream numberStream;
+  
 
   void changeColor() async {
     colorStream.getColors().listen((eventColor) {
@@ -49,7 +55,27 @@ class _StreamHomePageState extends State<StreamHomePage> {
   void initState() {
     super.initState();
     colorStream = ColorStream();
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream<int> stream = numberStreamController.stream;
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
     changeColor();
+  }
+
+  @override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
+  }
+
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
   }
 
   @override
@@ -60,8 +86,20 @@ class _StreamHomePageState extends State<StreamHomePage> {
         foregroundColor: Colors.white,
         backgroundColor: const Color.fromARGB(255, 143, 112, 197),
       ),
-      body: Container(
-        decoration: BoxDecoration(color: bgColor),
+      body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(lastNumber.toString(),
+                style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
+            ElevatedButton(
+              onPressed: () => addRandomNumber(),
+              child: const Text('New Random Number'),
+            )
+          ],
+        ),
       ),
     );
   }
