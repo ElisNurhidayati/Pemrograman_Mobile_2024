@@ -168,17 +168,27 @@ Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
 
 ### Langkah 13: Buka stream.dart
 
-![Langkah 13](/assets/P2)
+![Langkah 13](/assets/P2/13.png)
 
 ### Langkah 14: Buka main.dart
 
-![Langkah 14](/assets/P2)
+![Langkah 14](/assets/P2/14.png)
 
 ### Langkah 15: Edit method addRandomNumber()
 
-![Langkah 15](/assets/P2)
+![Langkah 15](/assets/P2/15.png)
 
 **Soal 7**
-Jelaskan maksud kode langkah 13 sampai 15 tersebut!
-Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
-Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
+- Jelaskan maksud kode langkah 13 sampai 15 tersebut!
+**Penjelasan:** Langkah 13: Menambahkan metode `addError()` di kelas `NumberStream` untuk mengirimkan error ke stream. Langkah 15: Mengedit `addRandomNumber()` untuk mengirimkan error (bukan angka acak) ke stream ketika tombol ditekan.
+
+- Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.
+
+    ![soal7](/assets/P2/soal7.png)
+
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 7".
+
+    ![soal7](/assets/P2/addError.gif)
+    ![soal7](/assets/P2/no_addError.gif)
+
+**Penjelasan:** Dengan addError(), Setiap kali tombol ditekan, aplikasi menampilkan -1 di UI karena stream menerima error dan ditangani dengan .onError(). Sedangkan Tanpa addError() Setiap kali tombol ditekan, aplikasi menghasilkan angka acak (0-9) yang ditampilkan di UI.
