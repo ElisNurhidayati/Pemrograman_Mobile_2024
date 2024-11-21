@@ -49,7 +49,7 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 
 ![Langkah 5](/assets/P1/5.png)
 
-### Langkah 4: Tambah variabel colors
+### Langkah 6: Tambah perintah yield*
 **Soal 3**
 - Jelaskan fungsi keyword `yield*` pada kode tersebut!
 
@@ -63,3 +63,31 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 
 ![Langkah 6](/assets/P1/6.png)
 
+### Langkah 7: Buka main.dart
+
+```dart
+import 'stream.dart';
+```
+
+### Langkah 8: Tambah variabel
+
+![Langkah 8](/assets/P1/8.png)
+
+### Langkah 9: Tambah method changeColor()
+
+![Langkah 9](/assets/P1/9.png)
+
+### Langkah 10: Lakukan override initState()
+
+![Langkah 10](/assets/P1/10.png)
+
+### Langkah 11: Ubah isi Scaffold()
+
+![Langkah 11](/assets/P1/11.png)
+
+### Langkah 12: Run
+**Soal 4**
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lakukan commit hasil jawaban Soal 4 dengan pesan "W12: Jawaban Soal 4"
+
+![Langkah 12](/assets/P1/12.gif)

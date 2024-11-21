@@ -17,7 +17,7 @@ class ColorStream {
   Stream<String> getColors() async* {
     yield* Stream.periodic(const Duration(seconds: 1), (int t) {
       int index = t % colors.length;
-      return colors[index];
+      return colors[index].value.toRadixString(16).padLeft(8, '0');
     });
   }
 }
