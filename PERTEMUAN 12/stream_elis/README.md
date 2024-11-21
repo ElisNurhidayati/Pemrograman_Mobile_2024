@@ -59,7 +59,7 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 
 **Penjelasan:** Kode tersebut membuat stream yang menghasilkan warna dari array colors secara berulang setiap 1 detik. yield* digunakan untuk meneruskan elemen dari Stream.periodic ke stream utama getColors.
 
-- Lakukan commit hasil jawaban Soal 2 dengan pesan "W12: Jawaban Soal 3"
+- Lakukan commit hasil jawaban Soal 3 dengan pesan "W12: Jawaban Soal 3"
 
 ![Langkah 6](/assets/P1/6.png)
 
@@ -91,3 +91,17 @@ import 'stream.dart';
 - Lakukan commit hasil jawaban Soal 4 dengan pesan "W12: Jawaban Soal 4"
 
 ![Langkah 12](/assets/P1/12.gif)
+
+### Langkah 13: Ganti isi method changeColor()
+
+
+![Langkah 13](/assets/P1/13.png)
+
+**Soal 5**
+- Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !
+
+**Penjelasan:**
+    - `listen()`: listen() digunakan untuk memulai langganan (subscription) ke sebuah stream. Fungsi ini langsung mengeksekusi callback (seperti (eventColor)) setiap kali ada data baru yang diterima dari stream. Cocok digunakan jika Anda ingin menangani stream dalam bentuk callback dan mengontrol kapan stream dimulai atau dihentikan. Ini lebih fleksibel, karena Anda bisa mengontrol lebih lanjut dengan onData, onError, atau onDone.
+    - `await for`: await for digunakan untuk mendengarkan stream secara asinkron, di mana aliran data dari stream akan diterima secara berurutan. Ini adalah cara yang lebih sederhana dan langsung untuk menangani stream jika Anda hanya perlu memproses elemen stream satu per satu. Menunggu stream selesai atau berhenti dengan await for memungkinkan Anda untuk menangani data secara sekuensial.
+
+- Lakukan commit hasil jawaban Soal 5 dengan pesan "W12: Jawaban Soal 5"
