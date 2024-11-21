@@ -45,3 +45,21 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 
 ![Langkah 4](/assets/P1/4.png)
 
+### Langkah 5: Tambah method getColors()
+
+![Langkah 5](/assets/P1/5.png)
+
+### Langkah 4: Tambah variabel colors
+**Soal 3**
+- Jelaskan fungsi keyword `yield*` pada kode tersebut!
+
+**Penjelasan:** Keyword `yield*` dalam Dart digunakan untuk menggabungkan aliran (stream) lain ke dalam aliran yang sedang dibuat. Dalam konteks kode yang diberikan, `yield*` digunakan untuk meneruskan seluruh elemen dari stream lain (`Stream.periodic`) ke dalam stream yang dihasilkan oleh fungsi generator `getColors`.
+
+- Apa maksud isi perintah kode tersebut?
+
+**Penjelasan:** Kode tersebut membuat stream yang menghasilkan warna dari array colors secara berulang setiap 1 detik. yield* digunakan untuk meneruskan elemen dari Stream.periodic ke stream utama getColors.
+
+- Lakukan commit hasil jawaban Soal 2 dengan pesan "W12: Jawaban Soal 3"
+
+![Langkah 6](/assets/P1/6.png)
+
