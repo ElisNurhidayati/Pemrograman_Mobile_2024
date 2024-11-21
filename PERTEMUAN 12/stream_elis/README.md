@@ -1,13 +1,15 @@
 # Pertemuan 12: Lanjutan State Management dengan Streams
 
-- Nama: Elis Nurhidayati
-- NIM: 2241720035
-- KElas: TI-3C
+**Nama: Elis Nurhidayati**
+
+**NIM: 2241720035**
+
+**Kelas: TI-3C**
 
 ---
 # Daftar Isi
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Praktikum 1: Dart Streams](#praktikum-1-dart-streams)
+- [Praktikum 2: Stream controllers dan sinks](#praktikum-2-stream-controllers-dan-sinks)
 
 
 ## Tujuan Praktikum
@@ -192,3 +194,28 @@ Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
     ![soal7](/assets/P2/no_addError.gif)
 
 **Penjelasan:** Dengan addError(), Setiap kali tombol ditekan, aplikasi menampilkan -1 di UI karena stream menerima error dan ditangani dengan .onError(). Sedangkan Tanpa addError() Setiap kali tombol ditekan, aplikasi menghasilkan angka acak (0-9) yang ditampilkan di UI.
+
+## Praktikum 3: Injeksi data ke streams
+### Langkah 1: Buka main.dart
+
+![Langkah 1](/assets/P3/1.png)
+
+### Langkah 2: Tambahkan kode ini di initState
+
+![Langkah 2](/assets/P3/2.png)
+
+### Langkah 3: Tetap di initState
+
+![Langkah 3](/assets/P3/3.png)
+
+### Langkah 4: Run
+**Soal 8**
+- Jelaskan maksud kode langkah 1-3 tersebut!
+
+**Penjelasan:** Langkah 1 membuat `StreamTransformer` yang mengubah data dari stream. Misalnya, data yang diterima dikalikan dengan 10, dan jika ada error, stream akan mengirimkan nilai `-1`. Pada langkah 2 menggunakan `StreamTransformer` pada stream yang ada dengan `.transform()`. Data yang masuk ke stream akan diproses oleh transformer sebelum diteruskan ke listener, yang kemudian memperbarui tampilan UI. Dan langkah 3 memastikan bahwa `initState` dipanggil dengan benar, dan inisialisasi stream serta transformer dilakukan sebelum widget ditampilkan.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
+
+![Langkah 4](/assets/P3/4.gif)
+
