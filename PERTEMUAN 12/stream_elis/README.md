@@ -33,3 +33,15 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 - Lakukan commit hasil jawaban Soal 1 dengan pesan "W12: Jawaban Soal 1"
 
 ![Langkah 2](/assets/P1/2.png)
+
+### Langkah 3: Buat file baru stream.dart
+
+![Langkah 3](/assets/P1/3.png)
+
+### Langkah 4: Tambah variabel colors
+**Soal 2**
+- Tambahkan 5 warna lainnya sesuai keinginan Anda pada variabel colors tersebut.
+- Lakukan commit hasil jawaban Soal 2 dengan pesan "W12: Jawaban Soal 2"
+
+![Langkah 4](/assets/P1/4.png)
+
