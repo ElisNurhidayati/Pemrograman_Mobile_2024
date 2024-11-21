@@ -219,3 +219,51 @@ Lalu lakukan commit dengan pesan "W12: Jawaban Soal 6".
 
 ![Langkah 4](/assets/P3/4.gif)
 
+## Praktikum 4: Subscribe ke stream events
+### Langkah 1: Tambah variabel
+
+![Langkah 1](/assets/P4/1.png)
+
+### Langkah 2: Edit initState()
+
+![Langkah 2](/assets/P4/2.png)
+
+### Langkah 3: Tetap di initState()
+
+![Langkah 3](/assets/P4/3.png)
+
+### Langkah 4: Tambah properti onDone()
+
+![Langkah 4](/assets/P4/4.png)
+
+### Langkah 5: Tambah method baru
+
+![Langkah 5](/assets/P4/5.png)
+
+### Langkah 6: Pindah ke method dispose()
+
+![Langkah 6](/assets/P4/6.png)
+
+### Langkah 7: Pindah ke method build()
+
+![Langkah 7](/assets/P4/7.png)
+
+### Langkah 8: Edit method addRandomNumber()
+
+![Langkah 8](/assets/P4/8.png)
+
+### Langkah 9: Run
+
+![Langkah 9](/assets/P4/9.gif)
+
+### Langkah 10: Tekan button ‘Stop Subscription'
+
+![Langkah 10](/assets/P4/10.png)
+
+**Soal 9**
+- Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+
+**Penjelasan:** Di langkah 2 menyiapkan stream dengan `NumberStream`, mendengarkan event dari stream menggunakan `subscription`, dan memperbarui tampilan (`lastNumber`) saat data baru diterima. Kemudian langkah 6 menghentikan langganan stream dengan `subscription.cancel()` untuk mencegah memory leaks. Dan ditambahkan di langkah 8, angka acak ke stream jika masih aktif; jika stream ditutup, `lastNumber` diset ke `-1`.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. `Dilangkah 9`
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
