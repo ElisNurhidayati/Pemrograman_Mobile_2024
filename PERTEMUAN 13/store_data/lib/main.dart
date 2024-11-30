@@ -1,8 +1,6 @@
 import 'dart:convert';
-import './pizza.dart';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import './pizza.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,66 +17,27 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
+      home: const myHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class myHomePage extends StatefulWidget {
+  const myHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<myHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<myHomePage> {
+  List<Pizza> pizzas = [];
   String pizzaString = '';
-  int appCounter = 0;
-
-  Future<List<Pizza>> readjsonFile() async {
-    String myString = await DefaultAssetBundle.of(context)
-        .loadString('assets/pizzalist.json');
-    List pizzaMapList = jsonDecode(myString);
-
-    List<Pizza> myPizzas = [];
-    for (var pizza in pizzaMapList) {
-      Pizza myPizza = Pizza.fromJson(pizza);
-      myPizzas.add(myPizza);
-    }
-
-    // setState(() {
-    //   return myPizzas;
-    //   pizzaString = myString;
-    // });
-    String json = convertTojson(myPizzas);
-    print(json);
-    return myPizzas;
-  }
-
-  Future readAndWritePreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    appCounter = prefs.getInt('appCounter') ?? 0;
-    appCounter++;
-    await prefs.setInt('appCounter', appCounter);
-
-    setState(() {
-      appCounter = appCounter;
-    });
-  }
-
-  List<Pizza> myPizzas = [];
-
-  String convertTojson(List<Pizza> pizzas) {
-    return jsonEncode(pizzas.map((pizza) => jsonEncode(pizza)).toList());
-  }
-
   @override
   void initState() {
     super.initState();
-    readAndWritePreferences();
-    readjsonFile().then((value) {
+    readJsonFile().then((value) {
       setState(() {
-        myPizzas = value;
+        pizzas = value;
       });
     });
   }
@@ -88,42 +46,42 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('JSON'),
-        foregroundColor: Colors.black,
+        title: const Text('JSON Elis'),
         backgroundColor: const Color.fromARGB(255, 247, 113, 158),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              'You have opened the app $appCounter times.',
-              style: const TextStyle(fontSize: 18),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                await prefs.setInt('appCounter', 0);
-                setState(() {
-                  appCounter = 0;
-                });
-              },
-              child: const Text('Reset counter'),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: myPizzas.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(myPizzas[index].pizzaName),
-                    subtitle: Text(myPizzas[index].description),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+      // body: Container(),
+      // body: Text(pizzaString),
+      body: ListView.builder(
+        itemCount: pizzas.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(pizzas[index].pizzaName),
+            subtitle: Text(pizzas[index].description),
+          );
+        },
       ),
     );
+  }
+
+  Future<List<Pizza>> readJsonFile() async {
+    String myString = await DefaultAssetBundle.of(context)
+        .loadString('assets/pizzalist.json');
+    List pizzaMapList = jsonDecode(myString);
+    // setState(() {
+    //   pizzaString = myString;
+    // });
+
+    List<Pizza> myPizzas = [];
+    for (var pizza in pizzaMapList) {
+      Pizza myPizza = Pizza.fromJson(pizza);
+      myPizzas.add(myPizza);
+    }
+    String json = convertToJSON(myPizzas);
+    print(json);
+    return myPizzas;
+  }
+
+  String convertToJSON(List<Pizza> pizzas) {
+    return jsonEncode(pizzas.map((pizza) => jsonEncode(pizza)).toList());
   }
 }
