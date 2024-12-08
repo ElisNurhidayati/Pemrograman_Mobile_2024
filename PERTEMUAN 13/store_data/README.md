@@ -1,19 +1,16 @@
-# PERSISTENSI DATA - PERTEMUAN 13
-## Praktikum 1: Converting Dart models into JSON
+# store_data
 
-![alt text](assets/images/p1a.png)
-![alt text](assets/images/p1b.png)
+A new Flutter project.
 
-## Praktikum 2: Reading the JSON file 
+## Getting Started
 
-![alt text](assets/images/p2a.png)
-![alt text](assets/images/p2b.png)
+This project is a starting point for a Flutter application.
 
- 
-## Praktikum 5: Accessing the filesystem, part 2: Working with directories
+A few resources to get you started if this is your first Flutter project:
 
-![alt text](assets/images)
- 
-## Praktikum 6: Using secure storage to store data
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-![alt text](assets/images)
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

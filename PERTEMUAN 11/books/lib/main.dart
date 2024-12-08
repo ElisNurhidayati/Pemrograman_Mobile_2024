@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const NavigationDialogScreen(),
+      // home: const NavigationDialogScreen(),
       // home: const NavigationFirst(),
       // home: const LocationScreen(),
-      // home: const FuturePage(),
+      home: const FuturePage(),
     );
   }
 }
