@@ -1,27 +1,22 @@
-import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'pizza.dart';
 
 class HttpHelper {
-  final String authority = '3v4j7.wiremockapi.cloud';
-  final String path = '/pizzalist';
+  final String authority = 'j6rqq.wiremockapi.cloud';
+  final String path = 'pizzalist';
 
   Future<List<Pizza>> getPizzaList() async {
-    // Construct the full URL
     final Uri url = Uri.https(authority, path);
-    // Make the GET request
     final http.Response result = await http.get(url);
+    if (result.statusCode == HttpStatus.ok) {
+      final jsonResponse = json.decode(result.body) as List;
 
-    // Check the status code
-    if (result.statusCode == 200) {
-      // Parse the response body
-      final jsonResponse = jsonDecode(result.body);
-      List<Pizza> pizzas = (jsonResponse as List<dynamic>)
-          .map<Pizza>((item) => Pizza.fromJson(item))
-          .toList();
+      List<Pizza> pizzas =
+          jsonResponse.map<Pizza>((i) => Pizza.fromJson(i)).toList();
       return pizzas;
     } else {
-      // Return an empty list if the request fails
       return [];
     }
   }
@@ -30,15 +25,30 @@ class HttpHelper {
     const postPath = '/pizza';
     String post = json.encode(pizza.toJson());
     Uri url = Uri.https(authority, postPath);
-
-    // Lakukan permintaan POST
     http.Response r = await http.post(
       url,
       body: post,
-      headers: {'Content-Type': 'application/json'},
     );
-
     return r.body;
   }
 
+  Future<String> putPizza(Pizza pizza) async {
+    const putPath = '/pizza';
+    String put = json.encode(pizza.toJson());
+    Uri url = Uri.https(authority, putPath);
+    http.Response r = await http.put(
+      url,
+      body: put,
+    );
+    return r.body;
+  }
+
+  Future<String> deletePizza(int id) async {
+    const deletePath = '/pizza';
+    Uri url = Uri.https(authority, deletePath);
+    http.Response r = await http.delete(
+      url,
+    );
+    return r.body;
+  }
 }
